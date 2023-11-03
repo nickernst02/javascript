@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Map</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoibmlja2VybnN0MDIiLCJhIjoiY2xraWxkZnZ5MDRuejNlbXRzNTRzOXBpYiJ9.IAz2YSW6TqHFiOyrPt2p3Q';
+    const map = new mapboxgl.Map({
+        container: 'map', // the id of your map container
+        style: 'mapbox://styles/mapbox/streets-v11', // map style URL
+        center: [-74.006, 40.7128], // starting center coordinates (longitude, latitude)
+        zoom: 10 // starting zoom level
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    map.on('load', () => {
+        map.addSource('my-data-source', {
+            type: 'geojson',
+            data: 'sample.geojson'
+        });
+        map.addLayer({
+            id: 'my-layer',
+            source: 'my-data-source',
+            type: 'circle',
+            paint: {
+                'circle-radius': 8,
+                'circle-color': 'blue'
+            }
+        });
+    });
+
+    map.on('click', 'my-layer', (e) => {
+        const feature = e.features[0];
+        // Handle the click event, e.g., display information about the clicked feature.
+    });
+</script>
+
+</body>
+</html>

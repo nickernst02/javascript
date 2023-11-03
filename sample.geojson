@@ -1,0 +1,41 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Point A",
+        "description": "This is Point A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-74.006, 40.7128]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Point B",
+        "description": "This is Point B"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.995, 40.709]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Line AB",
+        "description": "This is a line between Point A and Point B"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-74.006, 40.7128],
+          [-73.995, 40.709]
+        ]
+      }
+    }
+  ]
+}
